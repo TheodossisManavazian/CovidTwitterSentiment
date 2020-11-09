@@ -1,0 +1,65 @@
+#-----------------------#
+config.py
+#-----------------------#
+
+replace the values in the keys dictionary with your api keys
+
+#-----------------------#
+LoadCSV.py
+#-----------------------#
+
+Run this file to create CSV files with data from twitter containing the #Coronavius AND #COVID-19
+
+#---- LoadData ----#
+The function loadData can be modified to accept any query however for this project i didn't feel like it was necessary
+loadData takes 3 parameters, StartDate, Items, filename
+
+StartDate is a date(No earlier than 1 week prior to the current date) in string form "YYYY-MM-DD"
+Items is the amount of tweets that you would like to retrieve -- Large amounts of data could take hours to retrieve
+Filename is the name/path that you would like to save the data to.
+
+#---- LoadOldTweets ----#
+LoadOldTweets takes 3 parameters as well, startdate, enddate, and items. Similar to LoadData however there is no restriction on how far back you can retrieve tweets
+I found that the library that makes this work Is slower than the above library.
+
+StartDate is a date in string form "YYYY-MM-DD"
+endDate is a date in string form "YYYY-MM-DD" at least 1 day after StartDate
+Items is the amount of tweets that you would like to retrieve -- Large amounts of data could take hours to retrieve.
+you must wait 15 minutes between each query of 180 tweets.
+
+#-----------------------#
+SentimentAnalysis.py
+#-----------------------#
+
+Run this file to perform the actual sentiment on the data we got from the LoadCSV.py file.
+
+#----getSentimentValues----#
+getSentimentValues takes only one parameter which is a Pandas dataframe column of text.
+The function iterates through the column and returns 4 values.
+
+Sentiment uses the VaderSentiment package, what I like most about this package is that it works on UTF-8 emojis which I
+feel is a big part to calculating sentiment
+
+value 1: the amount of negative sentiment tweets
+value 2: the amount of neutral sentiment tweets
+value 3: the amount of negative sentiment tweets
+value 4: the overall compound score of the column
+
+#-----------------------#
+Data4_18.CVS AND Data4_25.csv
+#-----------------------#
+
+Each of these CSV files contain 10,000 tweets relating to the hashtags #Coronavirus and #COVID-19
+You'll find that when i submit my paper i use data regarding 30,000 tweets per CSV file, the reason i trimmed it down to 10,000
+is to that this compressed project folder isn't too large to submit to mooddle.
+Retweets are filtered out
+English tweets only
+
+#-----------------------#
+Rest of the CSV Files
+#-----------------------#
+
+Each of these CSV files contains 50 tweets relating to the hashtags #Coronavirus and #COVID-19
+Would have liked to retrieve more data per week however it would've taken ages to grab it.
+Retweets are filtered out
+English tweets only
